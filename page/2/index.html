@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Godfy's Blog</title><meta name="author" content="Godfy"><meta name="copyright" content="Godfy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta property="og:type" content="website">
+<meta property="og:title" content="Godfy&#39;s Blog">
+<meta property="og:url" content="https://1329372653.github.io/page/2/index.html">
+<meta property="og:site_name" content="Godfy&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://1329372653.github.io/null">
+<meta property="article:author" content="Godfy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1329372653.github.io/null"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://1329372653.github.io/page/2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-01-19 17:04:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Godfy's Blog</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Godfy's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/09/09/Redux%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="Redux的介绍与基本使用">     <img class="post_bg" src="https://1329372653.github.io/2019/09/09/Redux的介绍与基本使用/redux_logo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redux的介绍与基本使用"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/09/09/Redux%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="Redux的介绍与基本使用">Redux的介绍与基本使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-09-09T13:19:34.000Z" title="发表于 2019-09-09 21:19:34">2019-09-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/React/">React</a></span></div><div class="content">简介：Redux 是 JavaScript 状态容器，提供可预测化的状态管理。可以让你构建一致化的应用，运行于不同的环境（客户端、服务器、原生应用），并且易于测试。Redux是SPA单页面应用程序中多个组件之间共享数据的一种方式。
+Redux强调三个基本原则：
+唯一数据源 ：唯一数据源指的是应用的状态数据应该只存储在唯一的一个Store上。
+
+保持状态只读 ： 保持状态只读，就是说不能去直接修改状态，要修改Store的状态，必须要通过派发一个action对象完成。
+
+数据改变只能通过纯函数完成 ：这里所说的纯函数就是把Reducer，Reducer描述了state状态如何修改。
+
+
+
+基本使用：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485# 全局安装npm install -g create-react-app# ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/08/17/React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0%E7%9A%84%E6%B7%B1%E5%BA%A6%E7%90%86%E8%A7%A3/" title="React生命周期函数的深度理解">     <img class="post_bg" src="https://1329372653.github.io/2019/08/17/React生命周期函数的深度理解/react_logo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="React生命周期函数的深度理解"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/08/17/React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0%E7%9A%84%E6%B7%B1%E5%BA%A6%E7%90%86%E8%A7%A3/" title="React生命周期函数的深度理解">React生命周期函数的深度理解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-17T13:01:50.000Z" title="发表于 2019-08-17 21:01:50">2019-08-17</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/React/">React</a></span></div><div class="content">React 16.3+ 之后的生命周期函数：
+getDerivedStateFromProps: 在调用render()之前调用(props或者state改变的时候回调用)，并在 每次 渲染时调用。 需要使用派生状态的情况是很罕见得。
+
+componentDidMount: 首次渲染后调用，所有得 Ajax 请求、DOM 或状态更新、设置事件监听器都应该在此处发生。
+
+shouldComponentUpdate: 确定组件是否应该更新。 默认情况下，它返回true。 如果你确定在更新状态或属性后不需要渲染组件，则可以返回false值。 它是一个提高性能的好地方，因为它允许你在组件接收新属性时阻止重新渲染。
+
+getSnapshotBeforeUpdate: 在最新的渲染输出提交给 DOM 前将会立即调用，这对于从 DOM 捕获信息（比如：滚动位置）很有用。
+
+componentDidUpdate: 它主要用于更新 DOM 以响应 prop 或 state 更改。 如果shouldComponentUpdate()返回false，则不会触发。
+
+componentWillUnmount  ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/07/17/css%E5%92%8Cjs%E5%A6%82%E4%BD%95%E9%98%BB%E5%A1%9E%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%EF%BC%9F%E6%9C%89%E4%BD%95%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88%EF%BC%9F/" title="css和js如何阻塞浏览器渲染？有何优化方案？">     <img class="post_bg" src="https://1329372653.github.io/2019/07/17/css和js如何阻塞浏览器渲染？有何优化方案？/css_logo.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="css和js如何阻塞浏览器渲染？有何优化方案？"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/07/17/css%E5%92%8Cjs%E5%A6%82%E4%BD%95%E9%98%BB%E5%A1%9E%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%EF%BC%9F%E6%9C%89%E4%BD%95%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88%EF%BC%9F/" title="css和js如何阻塞浏览器渲染？有何优化方案？">css和js如何阻塞浏览器渲染？有何优化方案？</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-07-17T13:33:04.000Z" title="发表于 2019-07-17 21:33:04">2019-07-17</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">浏览器如何渲染页面：浏览器是解析DOM生成DOM Tree，结合CSS生成的CSS Tree，最终组成render tree，再渲染页面。
+1.CSS不会堵塞DOM解析(DOM Tree的生成)1234567891011121314151617181920&lt;!DOCTYPE html&gt;    &lt;html lang=&quot;en&quot;&gt;    &lt;head&gt;    	&lt;meta charset=&quot;UTF-8&quot;&gt;    	&lt;title&gt;Title&lt;/title&gt;    	&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/sleep3000-common.css&quot;&gt;    	&lt;script defer src=&quot;/js/logDiv.js&quot;&gt;    &lt;/head&gt;    &lt;body&gt;    	&lt;div&gt;&lt;/div&gt;    &lt;/body&gt ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/06/17/%E5%87%A0%E7%A7%8D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E6%96%B9%E6%B3%95/" title="几种深拷贝的方法">     <img class="post_bg" src="https://1329372653.github.io/2019/06/17/几种深拷贝的方法/001.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="几种深拷贝的方法"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/06/17/%E5%87%A0%E7%A7%8D%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E6%96%B9%E6%B3%95/" title="几种深拷贝的方法">几种深拷贝的方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-06-17T13:46:08.000Z" title="发表于 2019-06-17 21:46:08">2019-06-17</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">深拷贝与浅拷贝的区别：数据类型：数据分为基本数据类型(String, Number, Boolean, Null, Undefined，Symbol)和对象数据类型。
+基本数据类型的特点：直接存储在栈(stack)中的数据引用数据类型的特点：存储的是该对象在栈中引用，真实的数据存放在堆内存里
+引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体。
+
+浅拷贝与深拷贝：深拷贝和浅拷贝是只针对Object和Array这样的引用数据类型的。深拷贝和浅拷贝的示意图大致如下：
+
+浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。
+赋值和浅拷贝的区别：当我们把一个对象赋值给一个新的变量时，赋的其实是该对象的在栈中的地址，而不是堆中的数据。也就是两个对象指向的是同一个存储空间，无论哪个对象发生改变，其实都是改变的存储空间的内容，因此，两个对象是联动的。浅拷贝是按位拷贝对象，它会创建一个新对象，这个对象有着 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/05/19/%E4%BD%BF%E7%94%A8js%E5%AE%9E%E7%8E%B0%E9%93%BE%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="使用js实现链表数据结构">     <img class="post_bg" src="https://1329372653.github.io/2019/05/19/使用js实现链表数据结构/001.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用js实现链表数据结构"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/05/19/%E4%BD%BF%E7%94%A8js%E5%AE%9E%E7%8E%B0%E9%93%BE%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="使用js实现链表数据结构">使用js实现链表数据结构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-05-19T09:32:41.000Z" title="发表于 2019-05-19 17:32:41">2019-05-19</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">链表：链表是一组节点组成的集合，每个节点都使用一个对象的引用来指向它的后一个节点。指向另一节点的引用讲做链。
+
+链表和数组的区别：1234数组静态分配内存，链表动态分配内存；数组在内存中连续，链表不连续；数组元素在栈区，链表元素在堆区;数组查询快、增删慢；链表增删快、查询慢
+使用js实现链表:123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot;&gt;    &lt;meta name=&quot;viewport&quot;  ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/04/20/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/" title="js事件循环机制">     <img class="post_bg" src="https://1329372653.github.io/2019/04/20/js事件循环机制/001.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js事件循环机制"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/04/20/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/" title="js事件循环机制">js事件循环机制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-04-20T08:56:03.000Z" title="发表于 2019-04-20 16:56:03">2019-04-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">进程、线程
+进程是系统分配的独立资源，是 CPU 资源分配的基本单位，进程是由一个或者多个线程组成的。
+线程是进程的执行流，是CPU调度和分派的基本单位，同个进程之中的多个线程之间是共享该进程的资源的。
+
+浏览器内核
+浏览器是多进程的，浏览器每一个 tab 标签都代表一个独立的进程（也不一定，因为多个空白 tab 标签会合并成一个进程），浏览器内核（浏览器渲染进程）属于浏览器多进程中的一种。
+
+浏览器内核有多种线程在工作。
+
+GUI 渲染线程:
+
+负责渲染页面，解析 HTML，CSS 构成 DOM 树等，当页面重绘或者由于某种操作引起回流都会调起该线程。
+和 JS 引擎线程是互斥的，当 JS 引擎线程在工作的时候，GUI 渲染线程会被挂起，GUI 更新被放入在 JS 任务队列中，等待 JS 引擎线程空闲的时候继续执行。
+
+
+JS 引擎线程:
+
+单线程工作，负责解析运行 JavaScript 脚本。
+和 GUI 渲染线程互斥，JS 运行耗时过长就会导致页面阻塞。
+
+
+事件触发线程:
+
+当事件符合触发条件被触发时，该线程会把对应的事件回调函数添加到任务队列的队尾，等待 JS 引擎处理。
+
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/03/19/MVVM%E5%92%8CMVC%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BB%A5%E5%8F%8A%E5%8C%BA%E5%88%AB/" title="MVVM和MVC的优缺点以及区别">     <img class="post_bg" src="https://1329372653.github.io/2019/03/19/MVVM和MVC的优缺点以及区别/001.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MVVM和MVC的优缺点以及区别"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/03/19/MVVM%E5%92%8CMVC%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E4%BB%A5%E5%8F%8A%E5%8C%BA%E5%88%AB/" title="MVVM和MVC的优缺点以及区别">MVVM和MVC的优缺点以及区别</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-03-19T09:42:26.000Z" title="发表于 2019-03-19 17:42:26">2019-03-19</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">什么是MVC：MVC 模式代表 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。
+
+Model（模型） - 模型代表一个存取数据的对象或 JAVA POJO。它也可以带有逻辑，在数据变化时更新控制器。
+View（视图） - 视图代表模型包含的数据的可视化。
+Controller（控制器） - 控制器作用于模型和视图上。它控制数据流向模型对象，并在数据变化时更新视图。它使视图与模型分离开。
+
+
+什么是MVVM：MVVM是Model-View-ViewModel的缩写。
+MVVM最早由微软提出来，它借鉴了桌面应用程序的MVC思想，在前端页面中，把Model用纯JavaScript对象表示，View负责显示，两者做到了最大限度的分离，把Model和View关联起来的就是ViewModel。
+ViewModel负责把Model的数据同步到View显示出来，还负责把View的修改同步回Model
+View 和 Model 之间的同步工作完全是自动的，无需人为干涉（由viewModel完成）
+因此开发者只需关注业务逻辑，不需要手动操作DOM, ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2019/02/13/express-multer%E5%AE%9E%E7%8E%B0node%E4%B8%AD%E7%9A%84%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD/" title="express+multer实现node中的图片上传功能">     <img class="post_bg" src="https://1329372653.github.io/2019/02/13/express-multer实现node中的图片上传功能/nodejs.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="express+multer实现node中的图片上传功能"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/02/13/express-multer%E5%AE%9E%E7%8E%B0node%E4%B8%AD%E7%9A%84%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD/" title="express+multer实现node中的图片上传功能">express+multer实现node中的图片上传功能</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-02-13T12:05:18.000Z" title="发表于 2019-02-13 20:05:18">2019-02-13</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">前言当我们需要上传图片的时候，multer是个很不错的选择哦！
+官方介绍：
+Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency.
+NOTE: Multer will not process any form which is not multipart (multipart/form-data).
+
+1.multer中间件Multer是Express官方推出的，用于Node.jsmultipart/form-data请求数据处理的中间件。它基于busboy构建，可以高效的处理文件上传，但并不处理multipart/form-data之外的用户请求。
+2.安装multer1npm install multer --save
+3.使用Multer在解析完请求体后，会向Request对象中添加一个body对象和一个fil ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2019/01/08/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%90%84%E8%87%AA%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9/" title="清除浮动的几种方式，以及各自的优缺点">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="清除浮动的几种方式，以及各自的优缺点"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/01/08/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%90%84%E8%87%AA%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9/" title="清除浮动的几种方式，以及各自的优缺点">清除浮动的几种方式，以及各自的优缺点</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-01-08T13:58:54.000Z" title="发表于 2019-01-08 21:58:54">2019-01-08</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">父级div定义伪类:after和zoom和:before123456789101112 .clearfix:after&#123;display:block;clear:both;content:&quot;&quot;;visibility:hidden;height:0&#125; .clearfix&#123;zoom:1&#125;  &lt;div class=&quot;clearfix&quot;&gt; 	&lt;li class=&quot;item&quot;&gt; 	&lt;/li&gt; &lt;/div&gt; 原理：IE8以上和非IE浏览器才支持:after，zoom(IE转有属性)可解决ie6,ie7浮动问题。优点：浏览器支持好，不容易出现怪问题（目前：大型网站都有使用，如：腾迅，网易，新浪等等）。缺点：代码多，要两句代码结合使用，才能让主流浏览器都支持建议：推荐使用，建议定义公共类，以减少CSS代码在大型项目中，我会使用 clearfix 方法，在需要的地方使用.clearfix
+父级div定义height123原理：父级div手动定义height，就 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2018/12/15/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" title="数组去重方法总结">     <img class="post_bg" src="https://1329372653.github.io/2018/12/15/数组去重方法总结/js_logo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数组去重方法总结"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/12/15/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" title="数组去重方法总结">数组去重方法总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2018-12-15T13:33:57.000Z" title="发表于 2018-12-15 21:33:57">2018-12-15</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="content">思路一：定义一个新数组，并存放原数组的第一个元素，然后将元素组一一和新数组的元素对比，若不同则存放在新数组中。
+1234567891011121314151617181920function removal(arr) &#123;            let newArr = [arr[0]];            for (let i = 1; i &lt; arr.length; i++) &#123;                let repeat = false;                for (let j = 0; j &lt; newArr.length; j++) &#123;                    if (arr[i] === newArr[j]) &#123;                        repeat = true;                        break;                    &#125; else &#123;                    &#125;          ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/null" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Godfy</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/01/19/%E6%82%AC%E6%B5%AE%E6%8C%89%E9%92%AE%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88react%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%AF%87%EF%BC%89/" title="悬浮按钮的实现（react移动端篇）"><img src="https://1329372653.github.io/2020/01/19/悬浮按钮的实现（react移动端篇）/info.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="悬浮按钮的实现（react移动端篇）"/></a><div class="content"><a class="title" href="/2021/01/19/%E6%82%AC%E6%B5%AE%E6%8C%89%E9%92%AE%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88react%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%AF%87%EF%BC%89/" title="悬浮按钮的实现（react移动端篇）">悬浮按钮的实现（react移动端篇）</a><time datetime="2021-01-19T07:20:25.000Z" title="发表于 2021-01-19 15:20:25">2021-01-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/08/04/angular%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%88%B6%E7%BB%84%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%8F%98%E5%8C%96%E4%BA%86%E5%AD%90%E7%BB%84%E4%BB%B6%E8%A7%86%E5%9B%BE%E6%9C%AA%E6%9B%B4%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" title="angular项目中父组件数据变化了子组件视图未更新的问题处理"><img src="https://1329372653.github.io/2020/08/04/angular项目中父组件数据变化了子组件视图未更新的问题处理/info.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="angular项目中父组件数据变化了子组件视图未更新的问题处理"/></a><div class="content"><a class="title" href="/2020/08/04/angular%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%88%B6%E7%BB%84%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%8F%98%E5%8C%96%E4%BA%86%E5%AD%90%E7%BB%84%E4%BB%B6%E8%A7%86%E5%9B%BE%E6%9C%AA%E6%9B%B4%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" title="angular项目中父组件数据变化了子组件视图未更新的问题处理">angular项目中父组件数据变化了子组件视图未更新的问题处理</a><time datetime="2020-08-04T10:31:05.000Z" title="发表于 2020-08-04 18:31:05">2020-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/29/Sunburst%E5%9B%BE%EF%BC%88%E5%A4%AA%E9%98%B3%E5%9B%BE%EF%BC%89%E7%9A%84%E6%A0%91%E7%8A%B6%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" title="Sunburst图（太阳图）的树状数据处理"><img src="https://1329372653.github.io/2020/07/29/Sunburst图（太阳图）的树状数据处理/info.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Sunburst图（太阳图）的树状数据处理"/></a><div class="content"><a class="title" href="/2020/07/29/Sunburst%E5%9B%BE%EF%BC%88%E5%A4%AA%E9%98%B3%E5%9B%BE%EF%BC%89%E7%9A%84%E6%A0%91%E7%8A%B6%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" title="Sunburst图（太阳图）的树状数据处理">Sunburst图（太阳图）的树状数据处理</a><time datetime="2020-07-29T09:47:15.000Z" title="发表于 2020-07-29 17:47:15">2020-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/05/28/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E5%BE%AE%E5%8D%9A%E5%AF%B9%E4%BA%8E%E4%B8%8D%E5%90%8C%E5%A4%A7%E5%B0%8F%E3%80%81%E9%95%BF%E5%AE%BD%E4%B8%8D%E4%B8%80%E7%9A%84%E5%9B%BE%E7%89%87%E5%9C%A8%E4%B8%8D%E5%A4%B1%E7%9C%9F%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E5%A6%82%E4%BD%95%E5%9C%A8div%E4%B8%AD%E4%B9%96%E4%B9%96%E6%98%BE%E7%A4%BA%EF%BC%8C%E7%B1%BB%E4%BC%BC%E4%BA%8E%E4%B9%9D%E5%AE%AB%E6%A0%BC/" title="如何实现微信微博对于不同大小、长宽不一的图片在不失真的情况下如何在div中乖乖显示，类似于九宫格"><img src="https://1329372653.github.io/2020/05/28/如何实现微信微博对于不同大小、长宽不一的图片在不失真的情况下如何在div中乖乖显示，类似于九宫格/001.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何实现微信微博对于不同大小、长宽不一的图片在不失真的情况下如何在div中乖乖显示，类似于九宫格"/></a><div class="content"><a class="title" href="/2020/05/28/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E5%BE%AE%E5%8D%9A%E5%AF%B9%E4%BA%8E%E4%B8%8D%E5%90%8C%E5%A4%A7%E5%B0%8F%E3%80%81%E9%95%BF%E5%AE%BD%E4%B8%8D%E4%B8%80%E7%9A%84%E5%9B%BE%E7%89%87%E5%9C%A8%E4%B8%8D%E5%A4%B1%E7%9C%9F%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E5%A6%82%E4%BD%95%E5%9C%A8div%E4%B8%AD%E4%B9%96%E4%B9%96%E6%98%BE%E7%A4%BA%EF%BC%8C%E7%B1%BB%E4%BC%BC%E4%BA%8E%E4%B9%9D%E5%AE%AB%E6%A0%BC/" title="如何实现微信微博对于不同大小、长宽不一的图片在不失真的情况下如何在div中乖乖显示，类似于九宫格">如何实现微信微博对于不同大小、长宽不一的图片在不失真的情况下如何在div中乖乖显示，类似于九宫格</a><time datetime="2020-05-28T05:45:26.000Z" title="发表于 2020-05-28 13:45:26">2020-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/05/27/%E5%BC%80%E5%90%AFflex%E5%B8%83%E5%B1%80%E5%90%8E%E6%AF%8F%E4%B8%AAli%E4%B9%8B%E9%97%B4%E7%9A%84%E7%A9%BA%E7%99%BD%E9%97%B4%E8%B7%9D%E5%A4%AA%E5%A4%A7%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86%EF%BC%9F/" title="开启flex布局后每个li之间的空白间距太大应该怎么处理？"><img src="https://1329372653.github.io/2020/05/27/开启flex布局后每个li之间的空白间距太大应该怎么处理？/001.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="开启flex布局后每个li之间的空白间距太大应该怎么处理？"/></a><div class="content"><a class="title" href="/2020/05/27/%E5%BC%80%E5%90%AFflex%E5%B8%83%E5%B1%80%E5%90%8E%E6%AF%8F%E4%B8%AAli%E4%B9%8B%E9%97%B4%E7%9A%84%E7%A9%BA%E7%99%BD%E9%97%B4%E8%B7%9D%E5%A4%AA%E5%A4%A7%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86%EF%BC%9F/" title="开启flex布局后每个li之间的空白间距太大应该怎么处理？">开启flex布局后每个li之间的空白间距太大应该怎么处理？</a><time datetime="2020-05-27T10:23:26.000Z" title="发表于 2020-05-27 18:23:26">2020-05-27</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Angular/"><span class="card-category-list-name">Angular</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Echarts/"><span class="card-category-list-name">Echarts</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/React/"><span class="card-category-list-name">React</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%B6%E4%BB%96/"><span class="card-category-list-name">其他</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">教程</span><span class="card-category-list-count">22</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C/"><span class="card-category-list-name">项目经验</span><span class="card-category-list-count">3</span></a></li>
+            
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/AJAX/" style="font-size: 1.1em; color: #999">AJAX</a> <a href="/tags/Angular/" style="font-size: 1.1em; color: #999">Angular</a> <a href="/tags/CSS/" style="font-size: 1.1em; color: #999">CSS</a> <a href="/tags/CSS3/" style="font-size: 1.1em; color: #999">CSS3</a> <a href="/tags/Echarts/" style="font-size: 1.1em; color: #999">Echarts</a> <a href="/tags/Express/" style="font-size: 1.1em; color: #999">Express</a> <a href="/tags/JS/" style="font-size: 1.3em; color: #99a1ac">JS</a> <a href="/tags/JavaScript/" style="font-size: 1.3em; color: #99a1ac">JavaScript</a> <a href="/tags/MVC/" style="font-size: 1.1em; color: #999">MVC</a> <a href="/tags/MVVM/" style="font-size: 1.1em; color: #999">MVVM</a> <a href="/tags/NPM/" style="font-size: 1.1em; color: #999">NPM</a> <a href="/tags/Photoshop/" style="font-size: 1.1em; color: #999">Photoshop</a> <a href="/tags/Promise/" style="font-size: 1.1em; color: #999">Promise</a> <a href="/tags/React/" style="font-size: 1.5em; color: #99a9bf">React</a> <a href="/tags/Redux/" style="font-size: 1.1em; color: #999">Redux</a> <a href="/tags/Sunburst/" style="font-size: 1.1em; color: #999">Sunburst</a> <a href="/tags/YARN/" style="font-size: 1.1em; color: #999">YARN</a> <a href="/tags/echarts/" style="font-size: 1.1em; color: #999">echarts</a> <a href="/tags/express/" style="font-size: 1.1em; color: #999">express</a> <a href="/tags/flex/" style="font-size: 1.1em; color: #999">flex</a> <a href="/tags/js/" style="font-size: 1.5em; color: #99a9bf">js</a> <a href="/tags/multer/" style="font-size: 1.1em; color: #999">multer</a> <a href="/tags/ngx-echarts/" style="font-size: 1.1em; color: #999">ngx-echarts</a> <a href="/tags/nodejs/" style="font-size: 1.1em; color: #999">nodejs</a> <a href="/tags/this/" style="font-size: 1.1em; color: #999">this</a> <a href="/tags/webpack/" style="font-size: 1.1em; color: #999">webpack</a> <a href="/tags/%E4%B9%9D%E5%AE%AB%E6%A0%BC/" style="font-size: 1.1em; color: #999">九宫格</a> <a href="/tags/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/" style="font-size: 1.1em; color: #999">事件循环机制</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F/" style="font-size: 1.1em; color: #999">作用域</a> <a href="/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" style="font-size: 1.1em; color: #999">作用域链</a> <a href="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/" style="font-size: 1.1em; color: #999">兼容性</a> <a href="/tags/%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/" style="font-size: 1.1em; color: #999">函数重载</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.3em; color: #99a1ac">前端</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/" style="font-size: 1.1em; color: #999">前端模块化</a> <a href="/tags/%E5%8E%9F%E5%9E%8B/" style="font-size: 1.1em; color: #999">原型</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 1.1em; color: #999">原型链</a> <a href="/tags/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/" style="font-size: 1.1em; color: #999">图片上传</a> <a href="/tags/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" style="font-size: 1.1em; color: #999">数组去重</a> <a href="/tags/%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE/" style="font-size: 1.1em; color: #999">树状结构数据</a> <a href="/tags/%E6%B5%85%E6%8B%B7%E8%B4%9D/" style="font-size: 1.1em; color: #999">浅拷贝</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">七月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/01/"><span class="card-archive-list-date">一月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/12/"><span class="card-archive-list-date">十二月 2019</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/11/"><span class="card-archive-list-date">十一月 2019</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/10/"><span class="card-archive-list-date">十月 2019</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives/">
+              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">31</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-01-19T09:04:03.311Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Godfy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>

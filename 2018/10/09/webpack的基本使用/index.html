@@ -1,0 +1,329 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>webpack的基本使用 | Godfy's Blog</title><meta name="keywords" content="webpack"><meta name="author" content="Godfy"><meta name="copyright" content="Godfy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="webpack的基本使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack的基本使用">
+<meta property="og:url" content="https://1329372653.github.io/2018/10/09/webpack%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Godfy&#39;s Blog">
+<meta property="og:description" content="webpack的基本使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://1329372653.github.io/2018/10/09/webpack的基本使用/logo.jpg">
+<meta property="article:published_time" content="2018-10-09T15:20:43.000Z">
+<meta property="article:modified_time" content="2020-02-22T18:30:20.000Z">
+<meta property="article:author" content="Godfy">
+<meta property="article:tag" content="webpack">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1329372653.github.io/2018/10/09/webpack的基本使用/logo.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://1329372653.github.io/2018/10/09/webpack%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="preconnect" href="//zz.bdstatic.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Godfy","link":"链接: ","source":"来源: Godfy's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-02-23 02:30:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'true'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}const fontSizeVal = saveToLocal.get('global-font-size')
+if (fontSizeVal !== undefined) {
+  document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+}})()</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://1329372653.github.io/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://1329372653.github.io/2018/10/09/webpack的基本使用/logo.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Godfy's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">webpack的基本使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-10-09T15:20:43.000Z" title="发表于 2018-10-09 23:20:43">2018-10-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-02-22T18:30:20.000Z" title="更新于 2020-02-23 02:30:20">2020-02-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="webpack的基本使用"><a href="#webpack的基本使用" class="headerlink" title="webpack的基本使用"></a>webpack的基本使用</h1><p>1、webpack能够处理JS文件之间相互依赖的关系</p>
+<p>2、webpack能够处理JS的兼容性问题，将高级的、浏览器无法识别的语法转为低级的浏览器能识别的语法</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>全局安装webpack</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g webpack</span><br><span class="line">npm install webpack@3.0.0 -g  &#x2F;&#x2F;安装指定版本</span><br></pre></td></tr></table></figure>
+<p>全局安装脚手架()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack-cli -g</span><br></pre></td></tr></table></figure>
+<h2 id="初体验"><a href="#初体验" class="headerlink" title="初体验"></a>初体验</h2><p>这里以隔行换色为例：</p>
+<p>先构建文件目录如下：</p>
+<p><img src="webpack%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/01.png" alt="目录"></p>
+<p>其中node_modules文件夹是安装其他包自动构建的</p>
+<p>安装我们要用到的包，这里使用了jquery</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i jquery</span><br></pre></td></tr></table></figure>
+<p>index.html中写入代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;ie=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 不推荐在这里直接引用任何css script --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 所有的引用都在main.js中写 --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 因为main.js中用了ES6的语法，浏览器不兼容，此时就需要webpack来预处理 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;script src=&quot;./main.js&quot;&gt;&lt;/script&gt; --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第1个li<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第2个li<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第3个li<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第4个li<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第5个li<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第6个li<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第7个li<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第8个li<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第9个li<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>这是第10个li<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在main中写入代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是入口js文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//导入jquery</span></span><br><span class="line"><span class="keyword">import</span> $ <span class="keyword">from</span> <span class="string">&#x27;jquery&#x27;</span></span><br><span class="line"></span><br><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;li:odd&#x27;</span>).css(<span class="string">&#x27;backgroundColor&#x27;</span>,<span class="string">&#x27;skyblue&#x27;</span>);</span><br><span class="line">    $(<span class="string">&#x27;li:even&#x27;</span>).css(<span class="string">&#x27;backgroundColor&#x27;</span>,<span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>用webpack处理mian.js</p>
+<p>命令行中键入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webpack .&#x2F;src&#x2F;main.js .&#x2F;dist&#x2F;bundle.js</span><br></pre></td></tr></table></figure>
+<p><code>./src/main.js</code>是要处理的文件路径</p>
+<p><code>./dist/bundle.js</code>是处理之后需要保存到的路径</p>
+<p>此时将<code>main.js</code>处理成<code>bundle.js</code>,此时我们就可以在html页面中直接引入<code>bundle.js</code>了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;../dist/bundle.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>完成效果</p>
+<p><img src="webpack%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/02.png" alt="1561981889615"></p>
+<h2 id="基本配置文件的使用"><a href="#基本配置文件的使用" class="headerlink" title="基本配置文件的使用"></a>基本配置文件的使用</h2><p>每当我们将<code>mian.js</code>中的内容做出变化时，都要手动输入 <code>webpack ./src/main.js ./dist/bundle.js</code>命令来重新生成<code>bundle.js</code>,过于麻烦，这里可以设置配置文件以达到，只需要输入<code>webpack</code>就可以达到重新生成bundle.js的目的</p>
+<p>在项目根目录下创建<code>webpack.config.js</code>文件，进行配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//这个配置文件，其实就是一个js文件，通过Node中的模块操作，向外暴露了一个对象</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="comment">//手动指定入口 和 出口</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//入口，表示要使用webpack打包哪个文件</span></span><br><span class="line">    entry: path.join(__dirname,<span class="string">&#x27;./src/main.js&#x27;</span>),</span><br><span class="line">    <span class="comment">//输入文件相关属性</span></span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.join(__dirname,<span class="string">&#x27;./dist&#x27;</span>),<span class="comment">//指定打包好的文件，输出到哪个目录中去</span></span><br><span class="line">        filename: <span class="string">&#x27;bundle.js&#x27;</span> <span class="comment">//指定 输出文件名称</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用webpack-dev-server"><a href="#使用webpack-dev-server" class="headerlink" title="使用webpack-dev-server"></a>使用webpack-dev-server</h2><p>之前代码每做一次改变都要在命令行键入<code>webpack</code>，过于麻烦，为了进一步偷懒，我们可以利用<code>webpack-dev-server</code>工具来实现。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>命令行键入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack-dev-server -D  &#x2F;&#x2F;将此工具安装到项目的本地开发依赖</span><br><span class="line">npm i webpack -D   &#x2F;&#x2F;项目中安装webpack</span><br><span class="line">npm i webpack-cli -D   &#x2F;&#x2F;项目中安装webpack-cli</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p><code>webpack-dev-server</code>的使用方式同<code>webpack</code>一样，（这让我想到了<code>node</code> 与 nodemon`的关系）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webpack-dev-server   &#x2F;&#x2F;暂不可用</span><br></pre></td></tr></table></figure>
+<p>注意：1、由于我们是在项目本地中安装的，无法在powershell中直接使用，我们可以在package.json中，在scripts中添加<code>&quot;dev&quot;: &quot;webpack-dev-server&quot;</code>，配置如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;01-webpack&quot;</span>,</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>,</span><br><span class="line">        <span class="string">&quot;dev&quot;</span>: <span class="string">&quot;webpack-dev-server&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;keywords&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">    <span class="string">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;jquery&quot;</span>: <span class="string">&quot;^3.4.1&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;webpack-dev-server&quot;</span>: <span class="string">&quot;^3.7.2&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、由于webpack-dev-server是依赖于webpack的，所以我们呢必须要在项目中本地安装webpack和脚手架</p>
+<p>3、由于webpack-dev-server打包的文件并没有存放在磁盘上，而是暂存在内存中，导致我们的改变<code>main.js</code>时没有效果，它相当于在项目根目录生成了一个看不见的文件，</p>
+<p>所以我们在script引入时，应直接应用根目录下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;/bundle.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<h2 id="使用html-webpack-plugin"><a href="#使用html-webpack-plugin" class="headerlink" title="使用html-webpack-plugin"></a>使用html-webpack-plugin</h2><p>使得html页面也可以被加载到内存中，提高代码开发效率</p>
+<h4 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i html-webpack-plugin -D</span><br></pre></td></tr></table></figure>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><p>在main.js中引入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> htmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>在plugins中配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    <span class="comment">//配置插件的节点</span></span><br><span class="line">    <span class="keyword">new</span> webpack.HashedModuleIdsPlugin(), <span class="comment">//new 一个热更新的 模块对象 </span></span><br><span class="line">    <span class="keyword">new</span> htmlWebpackPlugin(&#123;  <span class="comment">//创建一个 在内存中生成HTML 页面的插件</span></span><br><span class="line">        <span class="comment">//指定 模板页面，将来会根据指定的页面的路径，去生成内存中的 页面</span></span><br><span class="line">        template: path.join(__dirname,<span class="string">&#x27;./src/index.html&#x27;</span>),</span><br><span class="line">        <span class="comment">// 指定 生成的页面的名称</span></span><br><span class="line">        filename: <span class="string">&#x27;index.html&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="webpack-处理第三方不是文件类型的过程"><a href="#webpack-处理第三方不是文件类型的过程" class="headerlink" title="webpack 处理第三方不是文件类型的过程"></a>webpack 处理第三方不是文件类型的过程</h2><ol>
+<li>当发现要处理的文件不是js文件时，回去配置文件中查找有无对应的第三方loader规则；</li>
+<li>如查找到对应规则，会调用对应的一系列loader处理此文件类型；</li>
+<li>调用use中一系列的loader时，会从后向前调用，第一个loader的处理结果会返回给下一个；loader，直到当前loader为最后一个loader；</li>
+<li>当最后一个loader处理完毕时，会将执行结构返回给webpack进行打包合并处理，并输出到bundle.js中去。</li>
+</ol>
+<h2 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h2><p><strong>由于webpack默认只能处理js文件，非js文件要使用loader加载器</strong></p>
+<h3 id="loader处理css"><a href="#loader处理css" class="headerlink" title="loader处理css"></a>loader处理css</h3><p>在index.html中不推荐直接引入css，这样可能会导致客户端项服务器发送第二次请求，这里使用第三方loader，利用webpack将css打包到bundle.js中去。</p>
+<p>处理css需要两个loader加载器</p>
+<ul>
+<li>style-loader</li>
+<li>css-loader</li>
+</ul>
+<h4 id="安装-3"><a href="#安装-3" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install style-loader css-loader -D</span><br></pre></td></tr></table></figure>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>在webpack.config.js中新增一个配置节点module，他是一个对象；在这个module对象上有一个rules属性，这个属性是一个数组，存放了所有第三方的 匹配 和 处理规则。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">        &#123;<span class="attr">test</span>: <span class="regexp">/\.css$/</span>, use: [<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>]&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h4><p>在main.js中引入css</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./css/index.css&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="loader处理less"><a href="#loader处理less" class="headerlink" title="loader处理less"></a>loader处理less</h3><p>处理less需要三个个loader加载器</p>
+<ul>
+<li>style-loader</li>
+<li>css-loader</li>
+<li>less-loader</li>
+</ul>
+<h4 id="安装-4"><a href="#安装-4" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install style-loader css-loader less-loader -D</span><br></pre></td></tr></table></figure>
+<p>注意：若之前已经安装了<code>style-loader</code> <code>css-loader</code>，仅需要安装<code>less-loader</code> 即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install less-loader -D</span><br></pre></td></tr></table></figure>
+<p>若要正常使用less-loader，还需要一个less依赖项，安装less</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install less -D</span><br></pre></td></tr></table></figure>
+<p>注意：此处的less是内部依赖于less-loader的，则无需再main.js中引入</p>
+<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><p>在module中的rules中添加配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">test</span>: <span class="regexp">/\.less$/</span>, use: [<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;less-loader&#x27;</span>]&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">main.js<span class="string">`中引入`</span>index.less</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./css/index.less&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="loader处理scss"><a href="#loader处理scss" class="headerlink" title="loader处理scss"></a>loader处理scss</h3><p>处理less需要三个个loader加载器</p>
+<ul>
+<li>style-loader</li>
+<li>css-loader</li>
+<li>sass-loader (坑：这里是sass 而文件名是.scss)</li>
+</ul>
+<h4 id="安装-5"><a href="#安装-5" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install sass-loader -D</span><br></pre></td></tr></table></figure>
+<p>安装内部依赖项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install node-sass -D</span><br></pre></td></tr></table></figure>
+<p>注意此处安装node-sass若失败，请切换cnpm进行安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install cnpm -g</span><br><span class="line">cnpm install node-sass -D</span><br></pre></td></tr></table></figure>
+<h4 id="配置-2"><a href="#配置-2" class="headerlink" title="配置"></a>配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;test: &#x2F;\.scss$&#x2F;, use: [&#39;style-loader&#39;,&#39;css-loader&#39;,&#39;sasjss-loader&#39;]&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用-4"><a href="#使用-4" class="headerlink" title="使用"></a>使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">main.js<span class="string">`中引入`</span>index.scss</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./css/index.scss&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="loader处理css中的图片"><a href="#loader处理css中的图片" class="headerlink" title="loader处理css中的图片"></a>loader处理css中的图片</h3><p>当css中出现引用图片时，webpack会解码出错，如</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">url</span>(./images/temp.jpg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之所以出错，是由于对url的解析出错，这里需要用到url-loader；</p>
+<p>处理图片需要两个loader加载器</p>
+<ul>
+<li>url-loader</li>
+<li>file-loader</li>
+</ul>
+<h4 id="安装-6"><a href="#安装-6" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install url-loader file-loader -D</span><br></pre></td></tr></table></figure>
+<h4 id="配置-3"><a href="#配置-3" class="headerlink" title="配置"></a>配置</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">test</span>: <span class="regexp">/\.(png|jpg|gif|bmp|jpeg)$/</span>, use: <span class="string">&#x27;url-loader?limit=1024$name=[hash:8]-[name].[ext]&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>该loader会默认将要加载的图片转码为base64的字符串替换url原本的位置，使其可以直接加载在页面上；</p>
+<p>其中：</p>
+<ul>
+<li>limit 当图片大小超过此属性对应的值时，不将其转码为base64，否则转为base64</li>
+<li>name 设置由url-loader处理之后的文件名<ul>
+<li>[hash: 8] 设置文件名开头为随机的8位哈希值</li>
+<li>[name] 设置文件名结束为文件的原本名字</li>
+<li>[ext] 设置后缀名为文件原本的后缀名</li>
+</ul>
+</li>
+</ul>
+<p>示例：当文件<code>test.png</code>大小大于limit时，文件被处理为<code>3hu4ye89-test.png</code></p>
+<h4 id="使用-5"><a href="#使用-5" class="headerlink" title="使用"></a>使用</h4><p>在css中使用</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(../images/test.png);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>并将此css文件引入main.js中</p>
+<h3 id="loader处理字体图标的问题"><a href="#loader处理字体图标的问题" class="headerlink" title="loader处理字体图标的问题"></a>loader处理字体图标的问题</h3><p>当我们使用第三方字体图标时（如bootstrap.css）时，若文件声明某种字体时而利用url去引用其他文件时，在webpack打包时便会报错。</p>
+<p>处理图片需要一个loader加载器</p>
+<ul>
+<li>url-loader</li>
+</ul>
+<h4 id="安装-7"><a href="#安装-7" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install url-loader -D</span><br></pre></td></tr></table></figure>
+<p>其实上一步已经安装，无需再次安装。</p>
+<h4 id="配置-4"><a href="#配置-4" class="headerlink" title="配置"></a>配置</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">test</span>: <span class="regexp">/\.(ttf|eot|svg|woff|woff2)$/</span>, use: <span class="string">&#x27;url-loader&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用-6"><a href="#使用-6" class="headerlink" title="使用"></a>使用</h4><p>这里以<code>bootstrap</code>为例：</p>
+<p>安装<code>bootstrap</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install bootstrap@3.3.5 --save</span><br></pre></td></tr></table></figure>
+<p><code>index.html</code>中输入</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;glyphicon glyphicon-heart&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>main.js</code>中引入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;bootstrap/dist/css/bootstrap.css&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>注意：这里不能直接引入<code>import &#39;bootstrap&#39;</code></p>
+<h2 id="babel的使用"><a href="#babel的使用" class="headerlink" title="babel的使用"></a>babel的使用</h2><p>由于webpack只能处理部分ES6的代码，所以为了更好的兼容ES6我们需要引入babel来达到目的。将ES6以上的语法自动转换成当前浏览器可以识别的ES最高版本的语法。</p>
+<h3 id="安装-8"><a href="#安装-8" class="headerlink" title="安装"></a>安装</h3><h4 id="安装babel的转码工具"><a href="#安装babel的转码工具" class="headerlink" title="安装babel的转码工具"></a>安装babel的转码工具</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i babel-core@6.26.3 babel-loader@7.1.5 babel-plugin-transform-runtime --save-dev</span><br></pre></td></tr></table></figure>
+<h4 id="安装babel转换的语法"><a href="#安装babel转换的语法" class="headerlink" title="安装babel转换的语法"></a>安装babel转换的语法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i babel-preset-env babel-preset-stage-0 --save-dev</span><br></pre></td></tr></table></figure>
+<h3 id="配置-5"><a href="#配置-5" class="headerlink" title="配置"></a>配置</h3><p> 1、在webpack.config.js中配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;test: &#x2F;\.js$&#x2F;, use: &#39;babel-loader&#39;, exclude: &#x2F;node_modules&#x2F;&#125;</span><br></pre></td></tr></table></figure>
+<p> 2、在项目根目录下新建一个名为 <code>.babelrc</code>的babel配置文件,文件中键入内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;presets&quot;: [&quot;env&quot;, &quot;stage-0&quot;],</span><br><span class="line">    &quot;plugins&quot;: [&quot;transform-runtime&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：该文件是严格遵从<code>json</code>格式的。</p>
+<p>其中:</p>
+<ul>
+<li>presets 中配置语法插件 (相当于高级语法翻译成低级语法的字典)</li>
+<li>plugins中配置属于babel的插件（相当于翻译器）</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Godfy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://1329372653.github.io/2018/10/09/webpack%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">https://1329372653.github.io/2018/10/09/webpack%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://1329372653.github.io" target="_blank">Godfy's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/webpack/">webpack</a></div><div class="post_share"><div class="social-share" data-image="https://1329372653.github.io/2018/10/09/webpack的基本使用/logo.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://1329372653.github.io/img/wechat.JPG" target="_blank"><img class="post-qr-code-img" src="https://1329372653.github.io/img/wechat.JPG" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://1329372653.github.io/img/alipay.JPG" target="_blank"><img class="post-qr-code-img" src="https://1329372653.github.io/img/alipay.JPG" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2018/11/11/js%E7%9A%84%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE%E8%AF%A6%E8%A7%A3/"><img class="prev-cover" src="https://1329372653.github.io/2018/11/11/js的原型与原型链详解/001.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">js的原型与原型链详解</div></div></a></div><div class="next-post pull-right"><a href="/2018/09/11/Express/"><img class="next-cover" src="https://1329372653.github.io/2018/09/11/Express/logo.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Express</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#webpack%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">webpack的基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="toc-number">1.2.</span> <span class="toc-text">初体验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">基本配置文件的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8webpack-dev-server"><span class="toc-number">1.4.</span> <span class="toc-text">使用webpack-dev-server</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">1.4.2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.4.3.</span> <span class="toc-text">启动服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8html-webpack-plugin"><span class="toc-number">1.5.</span> <span class="toc-text">使用html-webpack-plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-2"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-1"><span class="toc-number">1.5.0.2.</span> <span class="toc-text">使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-%E5%A4%84%E7%90%86%E7%AC%AC%E4%B8%89%E6%96%B9%E4%B8%8D%E6%98%AF%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">1.6.</span> <span class="toc-text">webpack 处理第三方不是文件类型的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#loader"><span class="toc-number">1.7.</span> <span class="toc-text">loader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#loader%E5%A4%84%E7%90%86css"><span class="toc-number">1.7.1.</span> <span class="toc-text">loader处理css</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-3"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">1.7.1.2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-2"><span class="toc-number">1.7.1.3.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#loader%E5%A4%84%E7%90%86less"><span class="toc-number">1.7.2.</span> <span class="toc-text">loader处理less</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-4"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-1"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-3"><span class="toc-number">1.7.2.3.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#loader%E5%A4%84%E7%90%86scss"><span class="toc-number">1.7.3.</span> <span class="toc-text">loader处理scss</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-5"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-2"><span class="toc-number">1.7.3.2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-4"><span class="toc-number">1.7.3.3.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#loader%E5%A4%84%E7%90%86css%E4%B8%AD%E7%9A%84%E5%9B%BE%E7%89%87"><span class="toc-number">1.7.4.</span> <span class="toc-text">loader处理css中的图片</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-6"><span class="toc-number">1.7.4.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-3"><span class="toc-number">1.7.4.2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-5"><span class="toc-number">1.7.4.3.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#loader%E5%A4%84%E7%90%86%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.5.</span> <span class="toc-text">loader处理字体图标的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-7"><span class="toc-number">1.7.5.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-4"><span class="toc-number">1.7.5.2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-6"><span class="toc-number">1.7.5.3.</span> <span class="toc-text">使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babel%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.8.</span> <span class="toc-text">babel的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-8"><span class="toc-number">1.8.1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85babel%E7%9A%84%E8%BD%AC%E7%A0%81%E5%B7%A5%E5%85%B7"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">安装babel的转码工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85babel%E8%BD%AC%E6%8D%A2%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">安装babel转换的语法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-5"><span class="toc-number">1.8.2.</span> <span class="toc-text">配置</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url(https://1329372653.github.io/2018/10/09/webpack的基本使用/logo.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2021 By Godfy</div><div class="footer_custom_text">Hi, Welcome to my <a href="https://1329372653.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="Godfy,前端,钻研,技术,加油,js,css,vue,react" data-fontsize="15px" data-random="false" async="async"></script><script>(function(){
+  const bp = document.createElement('script');
+  const curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  bp.dataset.pjax = ''
+  const s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})()</script></div></body></html>

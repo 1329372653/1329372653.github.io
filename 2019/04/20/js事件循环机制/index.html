@@ -206,7 +206,7 @@ if (fontSizeVal !== undefined) {
 <li><p>http 请求的时候会开启一条请求线程。</p>
 </li>
 <li><p>请求完成有结果了之后，将请求的回调函数添加到任务队列中，等待 JS 引擎处理。</p>
-<p><img src="js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/002.png"></p>
+<p><img src="/2019/04/20/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/002.png"></p>
 </li>
 </ul>
 </li>
@@ -228,8 +228,8 @@ if (fontSizeVal !== undefined) {
 <p>调用栈中的同步任务都执行完毕，栈内被清空了，就代表主线程空闲了，这个时候就会去任务队列中按照顺序读取一个任务放入到栈中执行。每次栈内被清空，都会去读取任务队列有没有任务，有就读取执行，一直循环读取-执行的操作，就形成了事件循环。</p>
 </li>
 </ul>
-<p>​                <img src="js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/001.png"></p>
-<p><img src="js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/003.png"></p>
+<p>​                <img src="/2019/04/20/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/001.png"></p>
+<p><img src="/2019/04/20/js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/003.png"></p>
 <ul>
 <li><p>定时器</p>
 <p>定时器会开启一条定时器触发线程来触发计时，定时器会在等待了指定的时间后将事件放入到任务队列中等待读取到主线程执行。</p>

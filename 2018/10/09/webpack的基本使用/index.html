@@ -176,7 +176,7 @@ if (fontSizeVal !== undefined) {
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack-cli -g</span><br></pre></td></tr></table></figure>
 <h2 id="初体验"><a href="#初体验" class="headerlink" title="初体验"></a>初体验</h2><p>这里以隔行换色为例：</p>
 <p>先构建文件目录如下：</p>
-<p><img src="webpack%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/01.png" alt="目录"></p>
+<p><img src="/2018/10/09/webpack%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/01.png" alt="目录"></p>
 <p>其中node_modules文件夹是安装其他包自动构建的</p>
 <p>安装我们要用到的包，这里使用了jquery</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i jquery</span><br></pre></td></tr></table></figure>
@@ -192,7 +192,7 @@ if (fontSizeVal !== undefined) {
 <p>此时将<code>main.js</code>处理成<code>bundle.js</code>,此时我们就可以在html页面中直接引入<code>bundle.js</code>了</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;../dist/bundle.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>完成效果</p>
-<p><img src="webpack%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/02.png" alt="1561981889615"></p>
+<p><img src="/2018/10/09/webpack%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/02.png" alt="1561981889615"></p>
 <h2 id="基本配置文件的使用"><a href="#基本配置文件的使用" class="headerlink" title="基本配置文件的使用"></a>基本配置文件的使用</h2><p>每当我们将<code>mian.js</code>中的内容做出变化时，都要手动输入 <code>webpack ./src/main.js ./dist/bundle.js</code>命令来重新生成<code>bundle.js</code>,过于麻烦，这里可以设置配置文件以达到，只需要输入<code>webpack</code>就可以达到重新生成bundle.js的目的</p>
 <p>在项目根目录下创建<code>webpack.config.js</code>文件，进行配置</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//这个配置文件，其实就是一个js文件，通过Node中的模块操作，向外暴露了一个对象</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="comment">//手动指定入口 和 出口</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//入口，表示要使用webpack打包哪个文件</span></span><br><span class="line">    entry: path.join(__dirname,<span class="string">&#x27;./src/main.js&#x27;</span>),</span><br><span class="line">    <span class="comment">//输入文件相关属性</span></span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.join(__dirname,<span class="string">&#x27;./dist&#x27;</span>),<span class="comment">//指定打包好的文件，输出到哪个目录中去</span></span><br><span class="line">        filename: <span class="string">&#x27;bundle.js&#x27;</span> <span class="comment">//指定 输出文件名称</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
